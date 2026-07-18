@@ -7,6 +7,7 @@ import {
 import { getBrand } from "@/data/brands";
 import { whatsappHref } from "@/data/site";
 import Button from "@/components/Button";
+import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import PageMeta from "@/components/PageMeta";
 
@@ -43,13 +44,19 @@ export default function BrandDetail() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <div>
             <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 text-[13px] font-semibold">
               {brand.sector}
             </span>
-            <h1 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-6xl">
+            <SplitHeading
+              key={brand.slug}
+              as="h1"
+              mode="load"
+              className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-6xl"
+            >
               {brand.name}
-            </h1>
+            </SplitHeading>
+            <Reveal delay={0.3}>
             <p className="mt-6 max-w-[58ch] text-[17px] leading-relaxed text-ink-soft">
               {brand.longDescription}
             </p>
@@ -82,7 +89,8 @@ export default function BrandDetail() {
                 </Button>
               )}
             </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>

@@ -6,6 +6,7 @@ import {
   IconSend,
 } from "@tabler/icons-react";
 import { site, whatsappHref, contactCopy } from "@/data/site";
+import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import PageMeta from "@/components/PageMeta";
 
@@ -34,11 +35,14 @@ export default function Contact() {
 
       <section className="bg-cream">
         <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 lg:py-24">
-          <Reveal>
-            <h1 className="max-w-3xl font-display text-5xl font-extrabold tracking-tight text-balance md:text-6xl">
-              {contactCopy.heading.replace("key", "")}
-              <span className="text-saffron">key.</span>
-            </h1>
+          <SplitHeading
+            as="h1"
+            mode="load"
+            className="max-w-3xl font-display text-5xl font-extrabold tracking-tight text-balance md:text-6xl"
+          >
+            Communication is the <span className="text-saffron">key.</span>
+          </SplitHeading>
+          <Reveal delay={0.3}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
               {contactCopy.body}
             </p>
@@ -127,7 +131,7 @@ export default function Contact() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="rounded-xl border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
+                    className="border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -139,7 +143,7 @@ export default function Contact() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="resize-none rounded-xl border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
+                    className="resize-none border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
                   />
                   {error && (
                     <p className="text-[13.5px] font-medium text-saffron-deep">

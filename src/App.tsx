@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -19,11 +21,35 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const mainRef = useRef<HTMLElement>(null);
+  const { pathname } = useLocation();
+
+  useGSAP(
+    () => {
+      const reduce = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (reduce || !mainRef.current) return;
+      gsap.fromTo(
+        mainRef.current,
+        { autoAlpha: 0, y: 18 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          clearProps: "all",
+        },
+      );
+    },
+    { dependencies: [pathname] },
+  );
+
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-1">
+      <main ref={mainRef} className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

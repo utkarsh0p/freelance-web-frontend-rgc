@@ -1,4 +1,6 @@
 import { site, aboutCopy, chairmanCopy, missionCopy } from "@/data/site";
+import ExpandableProse from "@/components/ExpandableProse";
+import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import PageMeta from "@/components/PageMeta";
 
@@ -12,11 +14,15 @@ export default function About() {
 
       <section className="bg-cream">
         <div className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 lg:py-24">
-          <Reveal>
-            <h1 className="max-w-4xl font-display text-5xl font-extrabold tracking-tight text-balance md:text-6xl">
-              A visionary conglomerate, guided by{" "}
-              <span className="text-saffron">divine inspiration.</span>
-            </h1>
+          <SplitHeading
+            as="h1"
+            mode="load"
+            className="max-w-4xl font-display text-5xl font-extrabold tracking-tight text-balance md:text-6xl"
+          >
+            A visionary conglomerate, guided by{" "}
+            <span className="text-saffron">divine inspiration.</span>
+          </SplitHeading>
+          <Reveal delay={0.3}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
               {site.fullName} ({site.name}) builds trusted, future-ready brands
               that enhance lifestyles and empower communities.
@@ -25,27 +31,12 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 lg:py-24">
-        <Reveal>
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-            The group story
-          </h2>
-        </Reveal>
-        <div className="mt-10 max-w-[70ch] space-y-6">
-          {aboutCopy.paragraphs.map((para, i) => (
-            <Reveal key={i} delay={i * 0.05}>
-              <p className="text-[17px] leading-relaxed text-ink-soft">{para}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       <section className="bg-cream py-20 lg:py-24">
         <div className="mx-auto max-w-[1200px] px-5 md:px-8">
           <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-20">
             <Reveal>
               <div className="lg:sticky lg:top-28">
-                <div className="overflow-hidden rounded-[28px] border border-line">
+                <div className="overflow-hidden border border-line">
                   <img
                     src="/assets/images/chairman-suraj-kumar-rai.jpg"
                     alt={chairmanCopy.name}
@@ -61,24 +52,37 @@ export default function About() {
               </div>
             </Reveal>
             <div>
+              <SplitHeading
+                as="h2"
+                mode="scroll"
+                className="font-display text-4xl font-bold tracking-tight md:text-5xl"
+              >
+                Our chairman
+              </SplitHeading>
               <Reveal>
-                <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                  Our chairman
-                </h2>
+                <ExpandableProse
+                  paragraphs={chairmanCopy.paragraphs}
+                  className="mt-8 max-w-[68ch]"
+                />
               </Reveal>
-              <div className="mt-8 max-w-[68ch] space-y-6">
-                {chairmanCopy.paragraphs.map((para, i) => (
-                  <Reveal key={i} delay={i * 0.05}>
-                    <p className="text-[17px] leading-relaxed text-ink-soft">
-                      {para}
-                    </p>
-                  </Reveal>
-                ))}
-              </div>
               <Reveal delay={0.1}>
-                <blockquote className="mt-10 rounded-card border-l-4 border-saffron bg-white p-7 font-display text-[22px] font-semibold leading-snug tracking-tight">
+                <blockquote className="mt-10 border-l-4 border-saffron bg-white p-7 font-display text-[22px] font-semibold leading-snug tracking-tight">
                   "{chairmanCopy.quote}"
                 </blockquote>
+              </Reveal>
+
+              <SplitHeading
+                as="h2"
+                mode="scroll"
+                className="mt-16 font-display text-4xl font-bold tracking-tight md:text-5xl"
+              >
+                The group story
+              </SplitHeading>
+              <Reveal>
+                <ExpandableProse
+                  paragraphs={aboutCopy.paragraphs}
+                  className="mt-8 max-w-[68ch]"
+                />
               </Reveal>
             </div>
           </div>
@@ -86,11 +90,15 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 lg:py-24">
-        <Reveal>
-          <div className="rounded-[36px] bg-ink px-8 py-14 text-canvas md:px-16 md:py-18">
-            <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Our mission
-            </h2>
+        <div className="bg-ink px-8 py-14 text-canvas md:px-16 md:py-18">
+          <SplitHeading
+            as="h2"
+            mode="scroll"
+            className="font-display text-4xl font-bold tracking-tight md:text-5xl"
+          >
+            Our mission
+          </SplitHeading>
+          <Reveal delay={0.15}>
             <div className="mt-8 max-w-[68ch] space-y-6">
               {missionCopy.paragraphs.map((para, i) => (
                 <p
@@ -104,8 +112,8 @@ export default function About() {
             <p className="mt-10 text-[14px] font-semibold tracking-[0.08em] text-[#ff8a50]">
               {site.motto.join(" · ").toUpperCase()}
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
     </>
   );

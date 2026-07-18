@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import SplitHeading from "@/components/SplitHeading";
 import PageMeta from "@/components/PageMeta";
 
 export default function NotFound() {
@@ -9,9 +10,13 @@ export default function NotFound() {
         <p className="font-display text-[100px] font-extrabold leading-none text-peach">
           404
         </p>
-        <h1 className="mt-4 font-display text-4xl font-bold tracking-tight">
+        <SplitHeading
+          as="h1"
+          mode="load"
+          className="mt-4 font-display text-4xl font-bold tracking-tight"
+        >
           This page went missing.
-        </h1>
+        </SplitHeading>
         <p className="mt-4 max-w-md text-[16px] text-ink-soft">
           The page you're looking for doesn't exist or has moved.
         </p>

@@ -10,6 +10,7 @@ import {
 } from "@tabler/icons-react";
 import { getBrand } from "@/data/brands";
 import Button from "@/components/Button";
+import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
 import PageMeta from "@/components/PageMeta";
 
@@ -58,13 +59,18 @@ export default function Crushburg() {
               />
             </div>
           </Reveal>
-          <Reveal delay={0.08}>
+          <div>
             <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 text-[13px] font-semibold">
               Foods & Beverages · Flagship brand
             </span>
-            <h1 className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-6xl">
+            <SplitHeading
+              as="h1"
+              mode="load"
+              className="mt-4 font-display text-5xl font-extrabold tracking-tight md:text-6xl"
+            >
               Crushburg
-            </h1>
+            </SplitHeading>
+            <Reveal delay={0.3}>
             <p className="mt-4 font-display text-2xl font-semibold text-saffron">
               Love at first bite.
             </p>
@@ -79,7 +85,8 @@ export default function Crushburg() {
                 <IconExternalLink size={16} stroke={2.2} />
               </Button>
             </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -101,11 +108,13 @@ export default function Crushburg() {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 lg:py-20">
-        <Reveal>
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-            On the menu
-          </h2>
-        </Reveal>
+        <SplitHeading
+          as="h2"
+          mode="scroll"
+          className="font-display text-4xl font-bold tracking-tight md:text-5xl"
+        >
+          On the menu
+        </SplitHeading>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {menu.map((item, i) => (
             <Reveal key={item.name} delay={(i % 3) * 0.05}>
@@ -121,16 +130,22 @@ export default function Crushburg() {
       <section className="bg-cream py-16 lg:py-20">
         <div className="mx-auto max-w-[1200px] px-5 md:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+            <div>
+              <SplitHeading
+                as="h2"
+                mode="scroll"
+                className="font-display text-4xl font-bold tracking-tight md:text-5xl"
+              >
                 Own a Crushburg
-              </h2>
-              <p className="mt-5 max-w-[54ch] text-[17px] leading-relaxed text-ink-soft">
-                Crushburg offers Cafe and Cafeteria franchise models built on
-                fresh ingredients, quick service and a menu Indians love. Reach
-                the team to talk territories and formats.
-              </p>
-            </Reveal>
+              </SplitHeading>
+              <Reveal delay={0.15}>
+                <p className="mt-5 max-w-[54ch] text-[17px] leading-relaxed text-ink-soft">
+                  Crushburg offers Cafe and Cafeteria franchise models built on
+                  fresh ingredients, quick service and a menu Indians love.
+                  Reach the team to talk territories and formats.
+                </p>
+              </Reveal>
+            </div>
             <Reveal delay={0.08}>
               <div className="rounded-card border border-line bg-white p-8">
                 <h3 className="font-display text-xl font-bold">

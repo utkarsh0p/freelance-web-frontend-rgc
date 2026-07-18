@@ -1,17 +1,61 @@
+import { motion, useReducedMotion } from "motion/react";
 import { divisions } from "@/data/site";
 import { cn } from "@/lib/utils";
 
-// Adapted from 21st.dev "Feature Section with hover effects" (Aceternity,
-// @manuarora700): bordered grid where each cell gets a gradient wash and a
-// growing indicator bar on hover. Re-skinned to the cream/ink/saffron tokens.
+// Desktop grid adapted from 21st.dev "Feature Section with hover effects"
+// (Aceternity, @manuarora700): bordered grid, gradient wash + growing
+// indicator bar on hover. Re-skinned to the cream/ink/saffron tokens.
+// Mobile gets a compact 2-column cell grid instead of the long list.
 
 export default function DivisionsGrid() {
   return (
-    <div className="grid grid-cols-1 overflow-hidden rounded-card border border-line bg-white sm:grid-cols-2 lg:grid-cols-5">
-      {divisions.map((division, index) => (
-        <Division key={division.name} index={index} {...division} />
-      ))}
-    </div>
+    <>
+      {/* Mobile / tablet: compact 2-col grid, icon + name only */}
+      <div className="grid grid-cols-2 overflow-hidden border border-line bg-white lg:hidden">
+        {divisions.map((division, index) => (
+          <MobileCell key={division.name} index={index} {...division} />
+        ))}
+      </div>
+
+      {/* Desktop: full bordered hover grid */}
+      <div className="hidden grid-cols-5 overflow-hidden border border-line bg-white lg:grid">
+        {divisions.map((division, index) => (
+          <Division key={division.name} index={index} {...division} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+function MobileCell({
+  name,
+  icon: Icon,
+  index,
+}: (typeof divisions)[number] & { index: number }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{
+        duration: 0.45,
+        delay: (index % 2) * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={cn(
+        "flex items-center gap-3 border-line p-4 transition-colors duration-150 active:bg-peach",
+        index % 2 === 0 && "border-r",
+        index < divisions.length - 2 && "border-b",
+      )}
+    >
+      <span className="text-saffron">
+        <Icon size={22} stroke={1.6} />
+      </span>
+      <span className="font-display text-[13.5px] font-bold leading-tight">
+        {name}
+      </span>
+    </motion.div>
   );
 }
 
@@ -21,13 +65,21 @@ function Division({
   icon: Icon,
   index,
 }: (typeof divisions)[number] & { index: number }) {
+  const reduce = useReducedMotion();
   return (
-    <div
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.55,
+        delay: (index % 5) * 0.06,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={cn(
         "group/division relative flex flex-col border-line py-9 lg:border-r",
         index % 5 === 4 && "lg:border-r-0",
         index < 5 && "border-b",
-        "max-lg:border-b max-lg:last:border-b-0 max-sm:border-r-0 sm:max-lg:[&:nth-child(odd)]:border-r",
       )}
     >
       <div
@@ -50,6 +102,6 @@ function Division({
       <p className="relative z-10 px-7 text-[13.5px] leading-relaxed text-muted">
         {blurb}
       </p>
-    </div>
+    </motion.div>
   );
 }

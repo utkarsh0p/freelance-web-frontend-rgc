@@ -14,7 +14,7 @@ export default function BrandCard({ brand, large = false }: Props) {
     <Link
       to={`/brands/${brand.slug}`}
       className={cn(
-        "group flex flex-col overflow-hidden rounded-card border border-line bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgb(32_21_21/0.10)]",
+        "group flex flex-col overflow-hidden rounded-card border-2 border-ink bg-white shadow-paper transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-paper-lg",
         large && "md:col-span-2",
       )}
     >
@@ -32,7 +32,7 @@ export default function BrandCard({ brand, large = false }: Props) {
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <span className="inline-flex w-fit rounded-full bg-peach px-3 py-1 text-xs font-semibold">
+        <span className="inline-flex w-fit rounded-full bg-peach px-3 py-1 font-condensed text-xs font-semibold uppercase tracking-wider">
           {brand.sector}
         </span>
         <h3 className="mt-3 font-display text-2xl font-bold tracking-tight">
@@ -41,7 +41,7 @@ export default function BrandCard({ brand, large = false }: Props) {
         <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">
           {brand.description}
         </p>
-        <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-saffron">
+        <span className="mt-4 inline-flex items-center gap-1 font-condensed text-[13px] font-semibold uppercase tracking-wider text-saffron">
           View brand
           <IconArrowUpRight
             size={16}

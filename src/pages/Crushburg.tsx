@@ -43,7 +43,7 @@ export default function Crushburg() {
       <section className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 lg:py-20">
         <Link
           to="/brands"
-          className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-muted transition-colors hover:text-ink"
+          className="inline-flex items-center gap-1.5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-muted transition-colors hover:text-ink"
         >
           <IconArrowLeft size={17} stroke={2.2} />
           All brands
@@ -51,7 +51,7 @@ export default function Crushburg() {
 
         <div className="mt-8 grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Reveal>
-            <div className="flex items-center justify-center rounded-card border border-line bg-white p-12">
+            <div className="flex items-center justify-center rounded-card border-2 border-ink bg-white p-12 shadow-paper">
               <img
                 src={brand.image}
                 alt="Crushburg logo"
@@ -60,7 +60,7 @@ export default function Crushburg() {
             </div>
           </Reveal>
           <div>
-            <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 text-[13px] font-semibold">
+            <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-wider">
               Foods & Beverages · Flagship brand
             </span>
             <SplitHeading
@@ -94,8 +94,8 @@ export default function Crushburg() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {facts.map((fact, i) => (
             <Reveal key={fact.label} delay={i * 0.05}>
-              <div className="rounded-card border border-line bg-white px-8 py-8">
-                <div className="font-display text-[44px] font-extrabold leading-none tracking-tight">
+              <div className="rounded-card border-2 border-ink bg-white px-8 py-8 shadow-paper">
+                <div className="font-condensed text-[44px] font-semibold leading-none">
                   {fact.value}
                 </div>
                 <div className="mt-2.5 text-[14px] font-medium text-muted">
@@ -118,7 +118,7 @@ export default function Crushburg() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {menu.map((item, i) => (
             <Reveal key={item.name} delay={(i % 3) * 0.05}>
-              <div className="group rounded-card border border-line bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgb(32_21_21/0.08)]">
+              <div className="group rounded-card border-2 border-ink bg-white p-7 shadow-paper transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-paper-lg">
                 <h3 className="font-display text-xl font-bold">{item.name}</h3>
                 <p className="mt-1.5 text-[14.5px] text-muted">{item.count}</p>
               </div>
@@ -147,7 +147,7 @@ export default function Crushburg() {
               </Reveal>
             </div>
             <Reveal delay={0.08}>
-              <div className="rounded-card border border-line bg-white p-8">
+              <div className="rounded-card border-2 border-ink bg-white p-8 shadow-paper">
                 <h3 className="font-display text-xl font-bold">
                   Crushburg contact
                 </h3>

@@ -44,7 +44,7 @@ export default function ExpandableProse({
             // (rAF fires after React commits).
             scheduleScrollTriggerRefresh();
           }}
-          className="mt-5 font-semibold text-saffron md:hidden"
+          className="mt-5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-saffron md:hidden"
         >
           {open ? "Show less" : "Read the full story"}
         </button>

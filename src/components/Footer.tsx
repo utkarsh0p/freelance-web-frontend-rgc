@@ -20,13 +20,13 @@ export default function Footer() {
               {site.fullName} is a visionary conglomerate building trusted,
               future-ready brands across ten industries.
             </p>
-            <p className="mt-4 text-[13px] font-semibold tracking-wide text-[#ff8a50]">
+            <p className="mt-4 font-condensed text-[13px] font-semibold uppercase tracking-wider text-[#ff8a50]">
               {site.motto.join(" · ")}
             </p>
           </div>
 
           <div>
-            <h3 className="font-display text-base font-bold">Company</h3>
+            <h3 className="font-condensed text-[14px] font-semibold uppercase tracking-wider">Company</h3>
             <ul className="mt-4 space-y-3 text-[15px] text-cream-dark">
               <li><Link to="/" className="transition-colors hover:text-canvas">Home</Link></li>
               <li><Link to="/about" className="transition-colors hover:text-canvas">About the group</Link></li>
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-base font-bold">Brands</h3>
+            <h3 className="font-condensed text-[14px] font-semibold uppercase tracking-wider">Brands</h3>
             <ul className="mt-4 space-y-3 text-[15px] text-cream-dark">
               {brands.slice(0, 5).map((b) => (
                 <li key={b.slug}>
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-base font-bold">Get in touch</h3>
+            <h3 className="font-condensed text-[14px] font-semibold uppercase tracking-wider">Get in touch</h3>
             <ul className="mt-4 space-y-4 text-[15px] text-cream-dark">
               <li className="flex items-start gap-3">
                 <IconBrandWhatsapp size={19} stroke={1.8} className="mt-0.5 shrink-0" />

@@ -36,7 +36,7 @@ export default function About() {
           <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-20">
             <Reveal>
               <div className="lg:sticky lg:top-28">
-                <div className="overflow-hidden border border-line">
+                <div className="overflow-hidden border-2 border-ink shadow-paper">
                   <img
                     src="/assets/images/chairman-suraj-kumar-rai.jpg"
                     alt={chairmanCopy.name}
@@ -68,7 +68,7 @@ export default function About() {
                 />
               </Reveal>
               <Reveal delay={0.1}>
-                <blockquote className="mt-10 border-l-4 border-saffron bg-white p-7 font-display text-[22px] font-semibold leading-snug tracking-tight">
+                <blockquote className="mt-10 border-2 border-ink border-l-4 border-l-saffron bg-white p-7 font-display text-[22px] font-semibold leading-snug tracking-tight shadow-paper">
                   "{chairmanCopy.quote}"
                 </blockquote>
               </Reveal>
@@ -111,7 +111,7 @@ export default function About() {
                 </p>
               ))}
             </div>
-            <p className="mt-10 text-[14px] font-semibold tracking-[0.08em] text-[#ff8a50]">
+            <p className="mt-10 font-condensed text-[14px] font-semibold uppercase tracking-wider text-[#ff8a50]">
               {site.motto.join(" · ").toUpperCase()}
             </p>
           </Reveal>

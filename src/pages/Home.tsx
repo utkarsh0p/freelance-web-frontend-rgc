@@ -104,7 +104,7 @@ export default function Home() {
             <Reveal delay={0.25}>
               <Link
                 to="/about"
-                className="mt-7 inline-flex items-center gap-1.5 font-semibold text-saffron hover:underline hover:underline-offset-4"
+                className="mt-7 inline-flex items-center gap-1.5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-saffron hover:underline hover:underline-offset-4"
               >
                 About the group
                 <IconArrowRight size={16} stroke={2.2} />
@@ -140,7 +140,7 @@ export default function Home() {
       <section className="bg-cream py-20 lg:py-24">
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-5 md:px-8 lg:grid-cols-[360px_1fr] lg:gap-20">
           <Reveal>
-            <div className="overflow-hidden border border-line">
+            <div className="overflow-hidden border-2 border-ink shadow-paper">
               <img
                 src="/assets/images/chairman-suraj-kumar-rai.jpg"
                 alt={chairmanCopy.name}
@@ -155,12 +155,12 @@ export default function Home() {
               "Growth with purpose, strength with values, and success with{" "}
               <span className="text-saffron">gratitude.</span>"
             </blockquote>
-            <p className="mt-6 text-[14px] font-semibold uppercase tracking-[0.06em] text-muted">
+            <p className="mt-6 font-condensed text-[14px] font-semibold uppercase tracking-wider text-muted">
               {chairmanCopy.name} · {chairmanCopy.role}
             </p>
             <Link
               to="/about"
-              className="mt-6 inline-flex items-center gap-1.5 font-semibold text-saffron hover:underline hover:underline-offset-4"
+              className="mt-6 inline-flex items-center gap-1.5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-saffron hover:underline hover:underline-offset-4"
             >
               Read the chairman's story
               <IconArrowRight size={16} stroke={2.2} />

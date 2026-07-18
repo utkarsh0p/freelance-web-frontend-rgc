@@ -12,7 +12,7 @@ function ColumnCard({ brand, tilt }: { brand: Brand; tilt: "left" | "right" }) {
   return (
     <div
       className={cn(
-        "border border-line bg-white p-5 shadow-[0_16px_36px_rgb(32_21_21/0.08)]",
+        "border-2 border-ink bg-white p-5 shadow-paper-sm",
         tilt === "left" ? "-rotate-[1.2deg]" : "rotate-[1.2deg]",
       )}
     >
@@ -23,7 +23,7 @@ function ColumnCard({ brand, tilt }: { brand: Brand; tilt: "left" | "right" }) {
           className="absolute inset-0 h-full w-full object-contain"
         />
       </div>
-      <p className="mt-3 text-center text-[13px] font-semibold text-ink-soft">
+      <p className="mt-3 text-center font-condensed text-[12px] font-semibold uppercase tracking-wider text-ink-soft">
         {brand.name}
       </p>
     </div>
@@ -33,7 +33,7 @@ function ColumnCard({ brand, tilt }: { brand: Brand; tilt: "left" | "right" }) {
 /** Mobile track tile: small logo only. */
 function Tile({ brand }: { brand: Brand }) {
   return (
-    <div className="w-[92px] shrink-0 border border-line bg-white p-3 shadow-[0_10px_22px_rgb(32_21_21/0.06)]">
+    <div className="w-[92px] shrink-0 border-2 border-ink bg-white p-3 shadow-paper-sm">
       <div className="relative aspect-square">
         <img
           src={brand.image}

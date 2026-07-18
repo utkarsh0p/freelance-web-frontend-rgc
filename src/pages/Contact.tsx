@@ -58,7 +58,7 @@ export default function Contact() {
                 href={site.whatsapp.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-start gap-5 rounded-card border border-line bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgb(32_21_21/0.08)]"
+                className="group flex items-start gap-5 rounded-card border-2 border-ink bg-white p-7 shadow-paper transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-paper-lg"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-peach text-saffron">
                   <IconBrandWhatsapp size={24} stroke={1.8} />
@@ -70,14 +70,14 @@ export default function Contact() {
                   <span className="mt-1 block text-[15px] text-ink-soft">
                     {site.whatsapp.number}
                   </span>
-                  <span className="mt-2 block text-[13.5px] font-semibold text-saffron">
+                  <span className="mt-2 block font-condensed text-[13px] font-semibold uppercase tracking-wider text-saffron">
                     The fastest way to reach us
                   </span>
                 </span>
               </a>
             </Reveal>
             <Reveal delay={0.06}>
-              <div className="flex items-start gap-5 rounded-card border border-line bg-white p-7">
+              <div className="flex items-start gap-5 rounded-card border-2 border-ink bg-white p-7 shadow-paper">
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-peach text-saffron">
                   <IconClock size={24} stroke={1.8} />
                 </span>
@@ -92,7 +92,7 @@ export default function Contact() {
               </div>
             </Reveal>
             <Reveal delay={0.12}>
-              <div className="flex items-start gap-5 rounded-card border border-line bg-white p-7">
+              <div className="flex items-start gap-5 rounded-card border-2 border-ink bg-white p-7 shadow-paper">
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-peach text-saffron">
                   <IconMapPin size={24} stroke={1.8} />
                 </span>
@@ -111,7 +111,7 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <form
               onSubmit={handleSubmit}
-              className="rounded-card border border-line bg-white p-8 md:p-10"
+              className="rounded-card border-2 border-ink bg-white p-8 shadow-paper md:p-10"
               noValidate
             >
               <h2 className="font-display text-2xl font-bold">
@@ -123,7 +123,7 @@ export default function Contact() {
 
               <div className="mt-7 space-y-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-[14px] font-semibold">
+                  <label htmlFor="name" className="font-condensed text-[13px] font-semibold uppercase tracking-wider">
                     Your name
                   </label>
                   <input
@@ -131,11 +131,11 @@ export default function Contact() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
+                    className="border-2 border-ink bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-[14px] font-semibold">
+                  <label htmlFor="message" className="font-condensed text-[13px] font-semibold uppercase tracking-wider">
                     How can we help?
                   </label>
                   <textarea
@@ -143,7 +143,7 @@ export default function Contact() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="resize-none border border-line bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
+                    className="resize-none border-2 border-ink bg-canvas px-4 py-3.5 text-[15px] outline-none transition-shadow focus:ring-2 focus:ring-saffron"
                   />
                   {error && (
                     <p className="text-[13.5px] font-medium text-saffron-deep">
@@ -153,7 +153,7 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-saffron px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:bg-saffron-deep active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 rounded-full bg-saffron px-7 py-3.5 text-[15px] font-semibold text-white shadow-paper-sm transition-all duration-200 hover:bg-saffron-deep active:translate-x-1 active:translate-y-1 active:shadow-none"
                 >
                   <IconSend size={17} stroke={2} />
                   Send via WhatsApp

@@ -27,7 +27,7 @@ export default function BrandDetail() {
       <section className="mx-auto max-w-[1200px] px-5 py-14 md:px-8 lg:py-20">
         <Link
           to="/brands"
-          className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-muted transition-colors hover:text-ink"
+          className="inline-flex items-center gap-1.5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-muted transition-colors hover:text-ink"
         >
           <IconArrowLeft size={17} stroke={2.2} />
           All brands
@@ -35,7 +35,7 @@ export default function BrandDetail() {
 
         <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Reveal>
-            <div className="flex items-center justify-center rounded-card border border-line bg-white p-12 lg:sticky lg:top-28">
+            <div className="flex items-center justify-center rounded-card border-2 border-ink bg-white p-12 shadow-paper lg:sticky lg:top-28">
               <img
                 src={brand.image}
                 alt={`${brand.name} logo`}
@@ -45,7 +45,7 @@ export default function BrandDetail() {
           </Reveal>
 
           <div>
-            <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 text-[13px] font-semibold">
+            <span className="inline-flex rounded-full bg-peach px-3.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-wider">
               {brand.sector}
             </span>
             <SplitHeading
@@ -62,7 +62,7 @@ export default function BrandDetail() {
             </p>
 
             {brand.status === "coming-soon" && (
-              <div className="mt-8 rounded-card border border-line bg-cream p-6">
+              <div className="mt-8 rounded-card border-2 border-ink bg-cream p-6 shadow-paper-sm">
                 <p className="font-semibold">Brand website on its way</p>
                 <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">
                   {brand.name}'s own website is currently in the works. For

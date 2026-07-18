@@ -11,14 +11,14 @@ export default function DivisionsGrid() {
   return (
     <>
       {/* Mobile / tablet: compact 2-col grid, icon + name only */}
-      <div className="grid grid-cols-2 overflow-hidden border border-line bg-white lg:hidden">
+      <div className="grid grid-cols-2 overflow-hidden border-2 border-ink bg-white shadow-paper lg:hidden">
         {divisions.map((division, index) => (
           <MobileCell key={division.name} index={index} {...division} />
         ))}
       </div>
 
       {/* Desktop: full bordered hover grid */}
-      <div className="hidden grid-cols-5 overflow-hidden border border-line bg-white lg:grid">
+      <div className="hidden grid-cols-5 overflow-hidden border-2 border-ink bg-white shadow-paper lg:grid">
         {divisions.map((division, index) => (
           <Division key={division.name} index={index} {...division} />
         ))}

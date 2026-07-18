@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/bricolage-grotesque";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/oswald";
 
 @theme {
   --color-canvas: #fdf7f0;
@@ -16,8 +17,13 @@
 
   --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-condensed: "Oswald Variable", "Arial Narrow", ui-sans-serif, sans-serif;
 
   --radius-card: 0px;
+
+  --shadow-paper: 6px 6px 0 0 var(--color-ink);
+  --shadow-paper-lg: 8px 8px 0 0 var(--color-ink);
+  --shadow-paper-sm: 4px 4px 0 0 var(--color-ink);
 }
 
 @layer base {

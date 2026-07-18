@@ -41,7 +41,7 @@ export default function Navbar() {
               end={end}
               className={({ isActive }) =>
                 cn(
-                  "rounded-full px-4 py-2 text-[15px] font-medium transition-colors hover:bg-peach",
+                  "rounded-full px-4 py-2 font-condensed text-[14px] font-semibold uppercase tracking-wider transition-colors hover:bg-peach",
                   isActive ? "text-saffron" : "text-ink",
                 )
               }
@@ -51,7 +51,7 @@ export default function Navbar() {
           ))}
           <Link
             to="/contact"
-            className="ml-3 inline-flex items-center rounded-full bg-saffron px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-saffron-deep"
+            className="ml-3 inline-flex items-center bg-saffron px-5 py-2.5 font-condensed text-[13px] font-semibold uppercase tracking-wider text-white shadow-paper-sm transition-all duration-200 hover:bg-saffron-deep active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             Contact us
           </Link>
@@ -61,7 +61,7 @@ export default function Navbar() {
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="inline-flex items-center rounded-full bg-saffron px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-saffron-deep"
+            className="inline-flex items-center bg-saffron px-4 py-2 font-condensed text-[12.5px] font-semibold uppercase tracking-wider text-white shadow-paper-sm transition-all duration-200 hover:bg-saffron-deep active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             Contact us
           </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       cn(
-                        "block rounded-xl px-3 py-3 text-lg font-medium",
+                        "block rounded-xl px-3 py-3 font-condensed text-lg font-semibold uppercase tracking-wider",
                         isActive ? "text-saffron" : "text-ink",
                       )
                     }

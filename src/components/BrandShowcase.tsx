@@ -82,7 +82,7 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
     <div ref={scope} className="mt-12">
       <div className="grid grid-cols-[1fr_1.05fr] gap-20">
         <div>
-          <div className="sticky top-28 aspect-square overflow-hidden border border-line bg-white shadow-[0_24px_48px_rgb(32_21_21/0.08)]">
+          <div className="sticky top-28 aspect-square overflow-hidden border-2 border-ink bg-white shadow-paper">
             {items.map((brand) => (
               <div
                 key={brand.slug}
@@ -107,9 +107,9 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
           {items.map((brand) => (
             <div
               key={brand.slug}
-              className="showcase-block flex min-h-[62vh] flex-col justify-center border-t border-line py-10 first:border-t-0"
+              className="showcase-block flex min-h-[62svh] flex-col justify-center border-t border-line py-10 first:border-t-0"
             >
-              <span className="inline-flex w-fit rounded-full bg-peach px-3.5 py-1.5 text-[13px] font-semibold">
+              <span className="inline-flex w-fit rounded-full bg-peach px-3.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-wider">
                 {brand.sector}
               </span>
               <h3 className="mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
@@ -120,7 +120,7 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
               </p>
               <Link
                 to={`/brands/${brand.slug}`}
-                className="group mt-7 inline-flex items-center gap-1.5 font-semibold text-saffron hover:underline hover:underline-offset-4"
+                className="group mt-7 inline-flex items-center gap-1.5 font-condensed text-[14px] font-semibold uppercase tracking-wider text-saffron hover:underline hover:underline-offset-4"
               >
                 View brand
                 <IconArrowUpRight

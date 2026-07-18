@@ -46,7 +46,7 @@ export default function StatBand() {
     <div ref={ref} className="grid grid-cols-2 gap-x-10 gap-y-12">
       {stats.map((stat) => (
         <div key={stat.label} className="stat-cell border-t border-ink/15 pt-6">
-          <div className="font-display text-5xl font-extrabold leading-none tracking-tight md:text-[56px]">
+          <div className="font-condensed text-5xl font-semibold leading-none md:text-[56px]">
             <span className="stat-num" data-value={stat.value}>
               {stat.value}
             </span>
@@ -56,7 +56,7 @@ export default function StatBand() {
               </sup>
             )}
           </div>
-          <div className="mt-3 text-[14px] font-medium text-muted">
+          <div className="mt-3 font-condensed text-[13px] font-semibold uppercase tracking-wider text-muted">
             {stat.label}
           </div>
         </div>

@@ -4,9 +4,11 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "dark" | "outline";
 
 const styles: Record<Variant, string> = {
-  primary: "bg-saffron text-white hover:bg-saffron-deep",
-  dark: "bg-ink text-canvas hover:bg-ink-soft",
-  outline: "border-2 border-ink text-ink hover:bg-ink hover:text-canvas",
+  primary:
+    "bg-saffron text-white hover:bg-saffron-deep shadow-paper-sm active:translate-x-1 active:translate-y-1 active:shadow-none",
+  dark: "bg-ink text-canvas hover:bg-ink-soft active:scale-[0.98]",
+  outline:
+    "border-2 border-ink text-ink hover:bg-ink hover:text-canvas shadow-paper-sm active:translate-x-1 active:translate-y-1 active:shadow-none",
 };
 
 type ButtonProps = {
@@ -29,7 +31,7 @@ export default function Button({
   type = "button",
 }: ButtonProps) {
   const cls = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold transition-all duration-200 active:scale-[0.98]",
+    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-condensed text-[14px] font-semibold uppercase tracking-wider transition-all duration-200",
     styles[variant],
     className,
   );

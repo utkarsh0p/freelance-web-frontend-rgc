@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { scheduleScrollTriggerRefresh } from "@/lib/gsap";
 
 type Props = {
   paragraphs: string[];
@@ -37,7 +38,12 @@ export default function ExpandableProse({
       {paragraphs.length > initial && (
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            setOpen((v) => !v);
+            // Height changes on toggle; re-measure triggers below this block
+            // (rAF fires after React commits).
+            scheduleScrollTriggerRefresh();
+          }}
           className="mt-5 font-semibold text-saffron md:hidden"
         >
           {open ? "Show less" : "Read the full story"}

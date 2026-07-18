@@ -40,6 +40,8 @@ export default function About() {
                   <img
                     src="/assets/images/chairman-suraj-kumar-rai.jpg"
                     alt={chairmanCopy.name}
+                    width={1024}
+                    height={1536}
                     className="w-full object-cover"
                   />
                 </div>

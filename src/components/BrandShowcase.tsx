@@ -6,11 +6,9 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import type { Brand } from "@/data/brands";
 
 /**
- * Brand portfolio scroll-tell.
- * Desktop: pinned left card crossfades as each brand's text block crosses
- * the viewport center.
- * Mobile: sticky-stack deck; each card pins near the top and scales/dims as
- * the next card slides over it (scrubbed by scroll).
+ * Brand portfolio scroll-tell (desktop only — small screens use
+ * BrandPortfolio's pinned horizontal track instead). Pinned left card
+ * crossfades as each brand's text block crosses the viewport center.
  */
 export default function BrandShowcase({ items }: { items: Brand[] }) {
   const scope = useRef<HTMLDivElement>(null);
@@ -19,31 +17,6 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
     () => {
       const mm = gsap.matchMedia();
 
-      // Mobile deck: covered card recedes as the next one arrives.
-      mm.add(
-        "(max-width: 1023px) and (prefers-reduced-motion: no-preference)",
-        () => {
-          const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
-          cards.forEach((card, i) => {
-            const next = cards[i + 1];
-            if (!next) return;
-            gsap.to(card.querySelector(".stack-inner"), {
-              scale: 0.93,
-              opacity: 0.5,
-              transformOrigin: "center top",
-              ease: "none",
-              scrollTrigger: {
-                trigger: next,
-                start: "top bottom",
-                end: "top 88px",
-                scrub: true,
-              },
-            });
-          });
-        },
-      );
-
-      // Desktop: pinned card crossfades with the aligned block.
       mm.add("(min-width: 1024px)", () => {
         const reduce = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
@@ -65,24 +38,25 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
           }
           gsap.to(slides[prev], {
             autoAlpha: 0,
-            scale: 0.94,
-            y: -18,
-            rotate: -2,
-            duration: 0.35,
+            scale: 0.97,
+            y: -10,
+            rotate: 0,
+            duration: 0.3,
             ease: "power2.in",
             overwrite: true,
           });
+          // No delay: overlap with the outgoing tween so there is never a
+          // blank frame between slides (replays on scroll-up via onEnterBack).
           gsap.fromTo(
             slides[next],
-            { autoAlpha: 0, scale: 1.06, y: 26, rotate: 2 },
+            { autoAlpha: 0, scale: 1.02, y: 12, rotate: 0 },
             {
               autoAlpha: 1,
               scale: 1,
               y: 0,
               rotate: 0,
-              duration: 0.55,
+              duration: 0.5,
               ease: "power3.out",
-              delay: 0.12,
               overwrite: true,
             },
           );
@@ -105,46 +79,8 @@ export default function BrandShowcase({ items }: { items: Brand[] }) {
   );
 
   return (
-    <div ref={scope} className="mt-10 lg:mt-12">
-      {/* ---- Mobile: sticky-stack deck ---- */}
-      <div className="space-y-8 lg:hidden">
-        {items.map((brand, i) => (
-          <div
-            key={brand.slug}
-            className="stack-card sticky top-[88px]"
-            style={{ zIndex: i + 1 }}
-          >
-            <div className="stack-inner border border-line bg-white p-6 shadow-[0_18px_40px_rgb(32_21_21/0.10)]">
-              <div className="relative h-36 border border-line">
-                <img
-                  src={brand.image}
-                  alt={`${brand.name} logo`}
-                  className="absolute inset-0 h-full w-full object-contain p-4"
-                />
-              </div>
-              <span className="mt-5 inline-flex w-fit rounded-full bg-peach px-3 py-1 text-[12px] font-semibold">
-                {brand.sector}
-              </span>
-              <h3 className="mt-3 font-display text-3xl font-bold tracking-tight">
-                {brand.name}
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
-                {brand.description}
-              </p>
-              <Link
-                to={`/brands/${brand.slug}`}
-                className="mt-5 inline-flex items-center gap-1.5 font-semibold text-saffron"
-              >
-                View brand
-                <IconArrowUpRight size={16} stroke={2.2} />
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* ---- Desktop: pinned crossfade showcase ---- */}
-      <div className="hidden lg:grid lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+    <div ref={scope} className="mt-12">
+      <div className="grid grid-cols-[1fr_1.05fr] gap-20">
         <div>
           <div className="sticky top-28 aspect-square overflow-hidden border border-line bg-white shadow-[0_24px_48px_rgb(32_21_21/0.08)]">
             {items.map((brand) => (

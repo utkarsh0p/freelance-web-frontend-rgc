@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap, SplitText } from "@/lib/gsap";
+import { gsap, SplitText, scheduleScrollTriggerRefresh } from "@/lib/gsap";
 
 type Props = {
   as?: "h1" | "h2" | "h3" | "blockquote";
@@ -58,6 +58,9 @@ export default function SplitHeading({
                 }
               : {}),
           });
+          // Splitting can change heading height; re-measure sibling triggers
+          // (rAF-coalesced, so N headings resolving together refresh once).
+          scheduleScrollTriggerRefresh();
         });
 
         return () => {

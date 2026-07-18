@@ -39,7 +39,7 @@ export default function BrandDetail() {
               <img
                 src={brand.image}
                 alt={`${brand.name} logo`}
-                className="max-h-[340px] w-full max-w-[420px] object-contain"
+                className="h-[340px] w-full max-w-[420px] object-contain"
               />
             </div>
           </Reveal>

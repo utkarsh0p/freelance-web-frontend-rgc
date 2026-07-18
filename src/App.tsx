@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, scheduleScrollTriggerRefresh } from "@/lib/gsap";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -12,9 +12,11 @@ import Crushburg from "@/pages/Crushburg";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
+// Must stay rendered before <main>: tree order makes this layout effect run
+// before any page useGSAP, so ScrollTriggers are created at scrollY 0.
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
   return null;
@@ -39,6 +41,7 @@ export default function App() {
           duration: 0.4,
           ease: "power2.out",
           clearProps: "all",
+          onComplete: scheduleScrollTriggerRefresh,
         },
       );
     },

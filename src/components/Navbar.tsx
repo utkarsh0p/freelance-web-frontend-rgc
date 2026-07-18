@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { IconMenu2, IconX, IconBrandWhatsapp } from "@tabler/icons-react";
-import { site } from "@/data/site";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
 // Adapted from 21st.dev "Header Navbar" (EldoraUI header-02): responsive
@@ -13,7 +12,6 @@ const links = [
   { to: "/", label: "Home", end: true },
   { to: "/about", label: "About" },
   { to: "/brands", label: "Brands" },
-  { to: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -23,17 +21,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/90 backdrop-blur-md">
       <div className="mx-auto flex h-[68px] max-w-[1200px] items-center justify-between px-5 md:px-8">
-        <Link to="/" className="flex items-center gap-3" title="Home">
-          <span className="block size-10 overflow-hidden rounded-full bg-[#0a0a0a]">
-            <img
-              src="/assets/images/logo-rai-group.jpg"
-              alt=""
-              className="size-full scale-[1.4] object-cover object-[50%_42%]"
-            />
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight">
-            RAI GROUP
-          </span>
+        <Link
+          to="/"
+          className="flex items-baseline font-display text-[22px] font-extrabold tracking-tight text-ink"
+          title="Home"
+        >
+          <span
+            aria-hidden
+            className="mb-[3px] mr-0.5 inline-block h-[3px] w-3.5 self-end bg-saffron"
+          />
+          raigroup
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -52,24 +49,30 @@ export default function Navbar() {
               {label}
             </NavLink>
           ))}
-          <a
-            href={site.whatsapp.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-3 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[14px] font-semibold text-canvas transition-colors hover:bg-ink-soft"
+          <Link
+            to="/contact"
+            className="ml-3 inline-flex items-center rounded-full bg-saffron px-5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-saffron-deep"
           >
-            <IconBrandWhatsapp size={17} stroke={2} />
-            Message us
-          </a>
+            Contact us
+          </Link>
         </nav>
 
-        <button
-          className="flex size-11 items-center justify-center rounded-lg text-ink transition-colors hover:bg-peach md:hidden"
-          aria-label={open ? "Close main menu" : "Open main menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <IconX size={24} /> : <IconMenu2 size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="inline-flex items-center rounded-full bg-saffron px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-saffron-deep"
+          >
+            Contact us
+          </Link>
+          <button
+            className="flex size-11 items-center justify-center rounded-lg text-ink transition-colors hover:bg-peach"
+            aria-label={open ? "Close main menu" : "Open main menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <IconX size={24} /> : <IconMenu2 size={24} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -104,15 +107,6 @@ export default function Navbar() {
                   </NavLink>
                 </motion.div>
               ))}
-              <a
-                href={site.whatsapp.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 font-semibold text-canvas"
-              >
-                <IconBrandWhatsapp size={18} stroke={2} />
-                Message us
-              </a>
             </div>
           </motion.nav>
         )}

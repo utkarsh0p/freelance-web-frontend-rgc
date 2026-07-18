@@ -9,17 +9,12 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="block size-11 overflow-hidden rounded-full bg-[#0a0a0a] ring-1 ring-white/15">
-                <img
-                  src="/assets/images/logo-rai-group.jpg"
-                  alt=""
-                  className="size-full scale-[1.4] object-cover object-[50%_42%]"
-                />
-              </span>
-              <span className="font-display text-lg font-bold">
-                RAI GROUP OF COMPANIES
-              </span>
+            <div className="flex items-baseline font-display text-[22px] font-extrabold tracking-tight text-canvas">
+              <span
+                aria-hidden
+                className="mb-[3px] mr-0.5 inline-block h-[3px] w-3.5 self-end bg-saffron"
+              />
+              raigroup
             </div>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-cream-dark">
               {site.fullName} is a visionary conglomerate building trusted,

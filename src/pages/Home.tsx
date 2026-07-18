@@ -9,7 +9,9 @@ import Button from "@/components/Button";
 import SectionHeading from "@/components/SectionHeading";
 import SplitHeading from "@/components/SplitHeading";
 import Reveal from "@/components/Reveal";
+import BrandPortfolio from "@/components/BrandPortfolio";
 import BrandShowcase from "@/components/BrandShowcase";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import DivisionsGrid from "@/components/DivisionsGrid";
 import HeroMarquee from "@/components/HeroMarquee";
 import StatBand from "@/components/StatBand";
@@ -79,6 +81,10 @@ function Hero() {
 }
 
 export default function Home() {
+  // Conditional mount (not CSS hiding) so only the active variant's GSAP
+  // runs and SplitText never measures a display:none heading.
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
   return (
     <>
       <PageMeta
@@ -119,13 +125,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 lg:py-20">
-        <SectionHeading
-          title="The brand portfolio"
-          lede="Nine brands across food, fitness, fashion, wellness, education and more."
-        />
-        <BrandShowcase items={brands} />
-      </section>
+      {isDesktop ? (
+        <section className="mx-auto max-w-[1200px] px-5 py-20 md:px-8">
+          <SectionHeading
+            title="The brand portfolio"
+            lede="Nine brands across food, fitness, fashion, wellness, education and more."
+          />
+          <BrandShowcase items={brands} />
+        </section>
+      ) : (
+        <BrandPortfolio items={brands} />
+      )}
 
       <section className="bg-cream py-20 lg:py-24">
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-5 md:px-8 lg:grid-cols-[360px_1fr] lg:gap-20">
@@ -134,6 +144,8 @@ export default function Home() {
               <img
                 src="/assets/images/chairman-suraj-kumar-rai.jpg"
                 alt={chairmanCopy.name}
+                width={1024}
+                height={1536}
                 className="w-full object-cover"
               />
             </div>

@@ -55,7 +55,7 @@ export default function Crushburg() {
               <img
                 src={brand.image}
                 alt="Crushburg logo"
-                className="max-h-[320px] w-full max-w-[380px] object-contain"
+                className="h-[320px] w-full max-w-[380px] object-contain"
               />
             </div>
           </Reveal>

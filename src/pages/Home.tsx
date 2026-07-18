@@ -10,28 +10,10 @@ import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import BrandCard from "@/components/BrandCard";
 import DivisionsGrid from "@/components/DivisionsGrid";
+import HeroMarquee from "@/components/HeroMarquee";
 import StatBand from "@/components/StatBand";
 import EmblemSection from "@/components/EmblemSection";
 import PageMeta from "@/components/PageMeta";
-
-const heroCollage = [
-  {
-    image: "/assets/images/brand-crushburg.jpg",
-    alt: "Crushburg logo",
-    className:
-      "left-1/2 top-1/2 z-20 w-[52%] -translate-x-1/2 -translate-y-1/2 rotate-2",
-  },
-  {
-    image: "/assets/images/brand-trishul-fitness.jpg",
-    alt: "Trishul Fitness logo",
-    className: "left-0 top-0 z-10 w-[44%] -rotate-3",
-  },
-  {
-    image: "/assets/images/brand-herbgiri.jpg",
-    alt: "Herbgiri logo",
-    className: "bottom-0 right-0 z-10 w-[44%] rotate-3",
-  },
-];
 
 function Hero() {
   const scope = useRef<HTMLDivElement>(null);
@@ -52,24 +34,12 @@ function Hero() {
             duration: 0.9,
             stagger: 0.12,
           })
-          .from(
-            ".hero-eyebrow",
-            { y: 16, opacity: 0, duration: 0.5 },
-            "-=0.55",
-          )
-          .from(".hero-sub", { y: 20, opacity: 0, duration: 0.6 }, "-=0.35")
+          .from(".hero-sub", { y: 20, opacity: 0, duration: 0.6 }, "-=0.45")
           .from(".hero-cta", { y: 16, opacity: 0, duration: 0.5 }, "-=0.35")
           .from(
-            ".hero-card",
-            {
-              y: 40,
-              opacity: 0,
-              rotate: 0,
-              scale: 0.94,
-              duration: 0.8,
-              stagger: 0.12,
-            },
-            "-=0.75",
+            ".hero-visual",
+            { x: 36, opacity: 0, duration: 0.9 },
+            "-=0.65",
           );
         return () => split.revert();
       });
@@ -81,11 +51,7 @@ function Hero() {
     <section ref={scope} className="mx-auto max-w-[1200px] px-5 md:px-8">
       <div className="grid items-center gap-14 pb-20 pt-14 md:pt-20 lg:grid-cols-[1.15fr_1fr] lg:pb-24">
         <div>
-          <div className="hero-eyebrow inline-flex items-center gap-2 rounded-full bg-peach px-4 py-2 text-[13px] font-semibold">
-            <span className="size-2 rounded-full bg-saffron" />
-            {site.name} · 10 industries, 9 brands
-          </div>
-          <h1 className="hero-title mt-7 font-display text-[52px] font-extrabold leading-[1.02] tracking-tight md:text-[76px]">
+          <h1 className="hero-title font-display text-[52px] font-extrabold leading-[1.02] tracking-tight md:text-[76px]">
             Building brands with <span className="text-saffron">purpose.</span>
           </h1>
           <p className="hero-sub mt-7 max-w-[46ch] text-lg leading-relaxed text-ink-soft">
@@ -104,21 +70,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative hidden aspect-[10/9] lg:block">
-          {heroCollage.map((card) => (
-            <div
-              key={card.alt}
-              className={`hero-card absolute rounded-card border border-line bg-white p-6 shadow-[0_24px_48px_rgb(32_21_21/0.10)] ${card.className}`}
-            >
-              <div className="relative aspect-[5/4]">
-                <img
-                  src={card.image}
-                  alt={card.alt}
-                  className="absolute inset-0 h-full w-full object-contain"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="hero-visual">
+          <HeroMarquee />
         </div>
       </div>
     </section>
@@ -141,12 +94,8 @@ export default function Home() {
 
       <Hero />
 
-      <section className="mx-auto max-w-[1200px] px-5 pb-20 md:px-8 lg:pb-24">
-        <StatBand />
-      </section>
-
       <section className="bg-cream py-20 lg:py-24">
-        <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
           <Reveal>
             <SectionHeading
               title="A conglomerate rooted in values"
@@ -160,6 +109,7 @@ export default function Home() {
               <IconArrowRight size={16} stroke={2.2} />
             </Link>
           </Reveal>
+          <StatBand />
         </div>
       </section>
 

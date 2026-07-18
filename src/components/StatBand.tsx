@@ -3,27 +3,39 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { stats } from "@/data/site";
 
-/** Count-up stat cards driven by GSAP ScrollTrigger (GSAP tree; no Motion here). */
+/**
+ * Borderless stat strip: hairline-topped numbers that count up on scroll.
+ * GSAP tree (entrance + count-up); keep Motion wrappers out of this.
+ */
 export default function StatBand() {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) return;
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".stat-cell", {
+          y: 26,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.09,
+          scrollTrigger: { trigger: ref.current, start: "top 85%", once: true },
+        });
 
-      gsap.utils.toArray<HTMLElement>(".stat-num").forEach((el) => {
-        const target = Number(el.dataset.value ?? 0);
-        const counter = { value: 0 };
-        gsap.to(counter, {
-          value: target,
-          duration: 1.4,
-          ease: "power2.out",
-          snap: { value: 1 },
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
-          onUpdate: () => {
-            el.textContent = String(Math.round(counter.value));
-          },
+        gsap.utils.toArray<HTMLElement>(".stat-num").forEach((el) => {
+          const target = Number(el.dataset.value ?? 0);
+          const counter = { value: 0 };
+          gsap.to(counter, {
+            value: target,
+            duration: 1.4,
+            ease: "power2.out",
+            snap: { value: 1 },
+            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+            onUpdate: () => {
+              el.textContent = String(Math.round(counter.value));
+            },
+          });
         });
       });
     },
@@ -31,13 +43,10 @@ export default function StatBand() {
   );
 
   return (
-    <div ref={ref} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div ref={ref} className="grid grid-cols-2 gap-x-10 gap-y-12">
       {stats.map((stat) => (
-        <div
-          key={stat.label}
-          className="rounded-card border border-line bg-white px-8 py-9"
-        >
-          <div className="font-display text-[52px] font-extrabold leading-none tracking-tight">
+        <div key={stat.label} className="stat-cell border-t border-ink/15 pt-6">
+          <div className="font-display text-5xl font-extrabold leading-none tracking-tight md:text-[56px]">
             <span className="stat-num" data-value={stat.value}>
               {stat.value}
             </span>
